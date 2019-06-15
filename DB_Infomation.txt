@@ -1,0 +1,88 @@
+--------Employee Payroll  Management System------------------
+************Data Base MySql*****************88
+**************Schema ************
+CREATE SCHEMA `emp_payroll` ;
+
+
+
+************Connection*****************
+Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/lit1","root","root");
+
+
+*********** ---User Table----**********
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `division` varchar(45) DEFAULT NULL,
+  `emp_id` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+*********----- staff_information   -----**********
+CREATE TABLE `staff_information` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(45) DEFAULT NULL,
+  `surname` varchar(45) DEFAULT NULL,
+  `Dob` varchar(45) DEFAULT NULL,
+  `Email` varchar(45) DEFAULT NULL,
+  `Telephone` varchar(45) DEFAULT NULL,
+  `Address` varchar(45) DEFAULT NULL,
+  `Department` varchar(45) DEFAULT NULL,
+  `Image` blob,
+  `Gender` varchar(45) DEFAULT NULL,
+  `Salary` varchar(45) DEFAULT NULL,
+  `Address2` varchar(45) DEFAULT NULL,
+  `Apartment` varchar(45) DEFAULT NULL,
+  `Post_code` varchar(45) DEFAULT 'null',
+  `Designation` varchar(45) DEFAULT NULL,
+  `Status` varchar(45) DEFAULT NULL,
+  `Date_hired` varchar(45) DEFAULT NULL,
+  `job_title` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+***** tabale for allowens  -----*******************
+CREATE TABLE `allowance` (
+  `id` int(11) DEFAULT NULL,
+  `overtime` varchar(45) DEFAULT NULL,
+  `medical` varchar(45) DEFAULT NULL,
+  `bonus` varchar(45) DEFAULT NULL,
+  `other` varchar(45) DEFAULT NULL,
+  `emp_id` varchar(45) DEFAULT NULL,
+  `salary` varchar(45) DEFAULT 'null',
+  `rate` varchar(45) DEFAULT 'null',
+  `total_allowance` varchar(45) DEFAULT NULL,
+  `firstname` varchar(45) DEFAULT NULL,
+  `surname` varchar(45) DEFAULT NULL,
+  `created_by` varchar(45) DEFAULT NULL,
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+--------------Duduction amount Table-------------
+CREATE TABLE `deductions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(45) DEFAULT NULL,
+  `surname` varchar(45) DEFAULT NULL,
+  `salary` int(11) DEFAULT NULL,
+  `deduction_amount` int(11) DEFAULT NULL,
+  `deduction_reason` varchar(45) DEFAULT NULL,
+  `emp_id` int(11) DEFAULT NULL,
+  `made_by` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+----------****Audit Tabe ****--------------------
+
+CREATE TABLE `audit` (
+  `audit_id` int(11) NOT NULL AUTO_INCREMENT,
+  `emp_id` int(11) DEFAULT NULL,
+  `date` varchar(45) DEFAULT 'null',
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`audit_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
